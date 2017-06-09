@@ -11,6 +11,10 @@ import {
   Text,
   View
 } from 'react-native';
+import {Provider} from 'react-redux';
+import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
+import thunkMiddle from 'redux-thunk';
+import createLogger from 'redux-logger';
 
 export default class Dietii extends Component {
   render() {
