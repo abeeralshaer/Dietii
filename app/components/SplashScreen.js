@@ -10,7 +10,7 @@ const SplashScreen = ({navigation})=>{
 
     <View>
     <Text>SplashScreen</Text>
-    <Button title='login' onPress={()=>navigation.navigate('Login')}/>
+    <Button title='login' onPress={()=>navigation.navigate('Home')}/>
     </View>
 
 
