@@ -12,7 +12,7 @@ export const login = (state = {},action)=>{
 
   }
 };
-const initialAction = AppNavigator.router.getActionForPathAndParams('Splash');
+const initialAction = AppNavigator.router.getActionForPathAndParams('Drawer');
 
 const initialState = AppNavigator.router.getStateForAction(initialAction);
 
