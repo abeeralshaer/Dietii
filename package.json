@@ -11,6 +11,8 @@
     "eslint-plugin-node": "^5.0.0",
     "react": "16.0.0-alpha.6",
     "react-native": "0.44.3",
+    "react-native-elements": "^0.12.2",
+    "react-native-vector-icons": "^4.1.1",
     "react-redux": "^5.0.5",
     "redux": "^3.6.0",
     "redux-logger": "^3.0.6",
@@ -28,5 +30,10 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts"
+    ]
   }
 }
