@@ -1,5 +1,5 @@
 import * as types from '../actions/types.js';
-import AppNavigator from '../navigators/AppNavigator.js';
+import {OpenAppStack} from '../navigators/StackNavigators.js';
 
 export const login = (state = {},action)=>{
   switch (action.type) {
@@ -12,12 +12,12 @@ export const login = (state = {},action)=>{
 
   }
 };
-const initialAction = AppNavigator.router.getActionForPathAndParams('Drawer');
+const initialAction = OpenAppStack.router.getActionForPathAndParams('Splash');
 
-const initialState = AppNavigator.router.getStateForAction(initialAction);
+const initialState = OpenAppStack.router.getStateForAction(initialAction);
 
 export const navReducer = (state = initialState ,action)=>{
 
-  const nextState = AppNavigator.router.getStateForAction(action,initialState);
+  const nextState = OpenAppStack.router.getStateForAction(action,initialState);
   return  nextState || state;
 };

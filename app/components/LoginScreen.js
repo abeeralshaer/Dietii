@@ -1,14 +1,16 @@
 import React from 'react';
 import {
   View,
-  Text
+  Text,
+  Button
 } from 'react-native';
 
-const LoginScreen = ()=>{
+const LoginScreen = ({navigation})=>{
   return(
 
     <View>
     <Text>LoginScreen</Text>
+    <Button title='تسجيل دخول' onPress={()=>navigation.navigate('LaunchApp')}></Button>
     </View>
 
   );

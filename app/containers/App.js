@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import React,{Component}from 'react';
-import AppNavigator from '../navigators/AppNavigator.js';
+import {OpenAppStack} from '../navigators/StackNavigators.js';
 import {addNavigationHelpers} from 'react-navigation';
 
 
@@ -15,7 +15,7 @@ const mapStatetoProps = (state) =>{
 class App extends Component {
   render() {
     return (
-      <AppNavigator navigation={addNavigationHelpers({
+      <OpenAppStack navigation={addNavigationHelpers({
         dispatch: this.props.dispatch,
         state: this.props.nav,
       })} />
