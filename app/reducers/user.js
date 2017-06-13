@@ -1,5 +1,5 @@
 import * as types from '../actions/types.js';
-import {OpenAppStack} from '../navigators/StackNavigators.js';
+import {OpenAppStack} from '../navigators/AppNavigator.js';
 
 export const login = (state = {},action)=>{
   switch (action.type) {
@@ -12,6 +12,7 @@ export const login = (state = {},action)=>{
 
   }
 };
+
 const initialAction = OpenAppStack.router.getActionForPathAndParams('Splash');
 
 const initialState = OpenAppStack.router.getStateForAction(initialAction);
