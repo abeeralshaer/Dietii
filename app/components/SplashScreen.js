@@ -2,7 +2,8 @@ import React,{Component} from 'react';
 import {
   View,
   Text,
-  Button
+  Button,
+  Image
 } from 'react-native';
 
 class SplashScreen extends Component {
@@ -17,13 +18,18 @@ class SplashScreen extends Component {
   }
 
   render() {
-    const {navigation} = this.props;
     return(
 
-    <View>
-    <Text>SplashScreen</Text>
-    <Button title='login' onPress={()=>navigation.navigate('Home')}/>
-    </View>
+
+    <Image
+      source={require('../../assets/img/splash.jpg')}
+      style={{
+   flex: 1,
+   alignSelf: 'stretch',
+   width: undefined,
+   height: undefined
+ }} />
+
     );
   }
 }
