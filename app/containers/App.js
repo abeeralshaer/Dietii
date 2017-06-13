@@ -1,11 +1,10 @@
 import {connect} from 'react-redux';
 import React,{Component}from 'react';
-import {OpenAppStack} from '../navigators/StackNavigators.js';
+import {OpenAppStack} from '../navigators/AppNavigator.js';
 import {addNavigationHelpers} from 'react-navigation';
 
 
 const mapStatetoProps = (state) =>{
-  console.log(state);
   return {
     nav: state.nav
   };
