@@ -6,11 +6,9 @@ import {
 
 const MyPlan = ()=>{
   return(
-
     <View>
     <Text>MyPlan</Text>
     </View>
-
   );
 };
 

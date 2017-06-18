@@ -3,9 +3,11 @@ import {
   View,
   Text,
   Button,
-  TextInput,
-  StyleSheet
+  TextInput
 } from 'react-native';
+import {styles}from './styles/style.js';
+import * as Strings from './values/strings.js';
+
 
 class LoginScreen extends Component {
   constructor(props){
@@ -16,42 +18,36 @@ class LoginScreen extends Component {
     };
   }
 
-
-
   render() {
     const{navigation}=this.props;
     return(
-
     <View   style={{
       flex: 1,
-      alignSelf: 'stretch',
+      alignContent:'center',
+      padding: 30,
+      margin: 50,
       width: undefined,
-      height: undefined
+      height: undefined,
+
     }}>
-    <Text style={styles.text}>اسم المستخدم أو الايميل</Text>
+    <Text style={styles.text}>{Strings.EMAIL}</Text>
     <TextInput
        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-       onChangeText={(text) => this.setState({text})}
+       onChange={(text) => this.setState({text})}
        value={this.state.email}
      />
-     <Text style={styles.text}>كلمة المرور</Text>
+     <Text style={styles.text}>{Strings.PASSWORD}</Text>
      <TextInput
         style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-        onChangeText={(text) => this.setState({text})}
+        onChange={(text) => this.setState({text})}
         value={this.state.password}
       />
-    <Button title='تسجيل دخول' onPress={()=>navigation.navigate('LaunchApp')}></Button>
+    <Button title={Strings.LOGIN} onPress={()=>navigation.navigate('LaunchApp')}></Button>
     </View>
 
     );
   }
 
 }
-
-const styles = StyleSheet.create({
-  text: {
-    fontFamily: 'thesans'
-  }
-});
 
 export default LoginScreen;

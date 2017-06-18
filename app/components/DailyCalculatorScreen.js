@@ -1,24 +1,21 @@
 import React from 'react';
+import {styles} from './styles/style.js';
 import {
   View,
-  Text,
-  StyleSheet
+  Text
 } from 'react-native';
+import * as Strings from './values/strings.js';
+
 
 const DailyCalculator = ()=>{
   return(
 
     <View>
-    <Text style={styles.text}>بسم الله الرحمن الرحيم</Text>
+    <Text style={styles.text}>{Strings.CALORIE_CALCULATOR}</Text>
     </View>
 
   );
 };
 
-const styles = StyleSheet.create({
-  text: {
-    fontFamily: 'thesans'
-  }
-});
 
 export default DailyCalculator;

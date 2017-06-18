@@ -3,14 +3,14 @@ import {
   View,
   Text
 } from 'react-native';
+import * as Strings from './values/strings.js';
+
 
 const SignupScreen = ()=>{
   return(
-
     <View>
-    <Text>SignupScreen</Text>
+    <Text>{Strings.LOGIN}</Text>
     </View>
-
   );
 };
 
