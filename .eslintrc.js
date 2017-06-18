@@ -21,6 +21,7 @@ module.exports = {
 ],
 "rules": {
  "react/display-name": [2],
+ "react/prop-types":[1],
 "indent": [
 "error",
 2
