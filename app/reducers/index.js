@@ -8,7 +8,6 @@ import {createLogger} from 'redux-logger';
 
 const reducers = combineReducers(
   {
-    user : userReducers,
     nav  :userReducers.navReducer
 
   });
