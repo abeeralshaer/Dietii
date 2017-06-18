@@ -163,5 +163,6 @@ const Routes = {
 };
 
 export const OpenAppStack = StackNavigator(Routes,{
-  headerMode:'none'
+  headerMode:'none',
+  initialRouteName: 'Splash'
 });
