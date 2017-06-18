@@ -1,103 +1,131 @@
-import {DrawerNavigator,DrawerItems,StackNavigator}from 'react-navigation';
-import {ScrollView,Text,View,Image,StyleSheet}from 'react-native';
+import {DrawerNavigator,DrawerItems,StackNavigator,TabNavigator,NavigationActions}from 'react-navigation';
+import {ScrollView,Text,View,Image}from 'react-native';
 import React from 'react';
 import Splash from '../components/SplashScreen.js';
 import Login from '../components/LoginScreen.js';
 import Signup from '../components/SignupScreen.js';
-import Subscribe from '../components/SubscribeScreen.js';
+import SubscribeScreen from '../components/SubscribeScreen.js';
 import ShoppingList from '../components/ShoppingListScreen.js';
 import MyPlan from '../components/MyPlan.js';
-import {Icon} from 'react-native-elements';
-import Main from '../components/MainScreen.js';
+import MainScreen from '../components/MainScreen.js';
 import DailyCalculator from '../components/DailyCalculatorScreen.js';
 import AskExpert from '../components/AskExpertScreen.js';
-import {TabNavigator,NavigationActions}from 'react-navigation';
+import DrawerIcon from '../components/DrawerIcon.js';
+import {Icon}from 'react-native-elements';
+import Title from '../components/Title.js';
+import {styles}from '../components/styles/style.js';
+import * as Strings from '../components/values/strings.js';
 
+
+export const navigateOnce = (getStateForAction) => (action, state) => {
+  const {type, routeName} = action;
+  return (
+    state &&
+    type === NavigationActions.NAVIGATE &&
+    routeName === state.routes[state.routes.length - 1].routeName
+  ) ? null : getStateForAction(action, state);
+};
 
 const MainTabs = {
   Main: {
-    screen: Main
-
+    screen: MainScreen,
+    navigationOptions :{
+      title: Strings.MAIN
+    }
   },
   DailyCalculator: {
-    screen: DailyCalculator
-
+    screen: DailyCalculator,
+    navigationOptions :{
+      title: Strings.CALORIE_CALCULATOR
+    }
   },
   AskExpert: {
-    screen: AskExpert
-
+    screen: AskExpert,
+    navigationOptions :{
+      title: Strings.ASK_EXPERT
+    }
   }
 };
 
 export const MainTabsNavigator = TabNavigator(MainTabs);
-export const styles = StyleSheet.create({
-  text: {
-    fontFamily: 'thesans'
-  }
-});
-const DrawerIcon = ({navigation}) => {
-  return (
-   <Icon
-      name='list'
-      type='font-awesome'
-      color='#f50'
-      onPress={() => {navigation.navigate({routeName:'DrawerOpen'})
-    }}/>
-  );
-};
 
 export const TabsStackNavigator = StackNavigator({
   Home: {
-    screen: MainTabsNavigator,
-    navigationOptions:(props) => ({
-      headerLeft: <DrawerIcon {...props}/>,
-      headerTitle: <Text style={styles.text}>الرئيسية</Text>
-    })
+    screen: MainTabsNavigator
   }
+});
+MainTabsNavigator.navigationOptions = ({navigation})=>({
+  headerTintColor: 'black',
+  headerLeft:<DrawerIcon {...navigation}/>
 });
 
 export const SubscribeStackNav = StackNavigator({
   Subscribe: {
-    screen: Subscribe,
-    navigationOptions:(props) => ({
-      headerLeft: <DrawerIcon {...props}/>,
-      headerTitle: <Text style={styles.text}>إشترك الآن</Text>
-    })
+    screen: SubscribeScreen
   }
 });
 
 export const MyPlanStackNav = StackNavigator({
   MyPlan: {
-    screen: MyPlan,
-    navigationOptions:(props) => ({
-      headerLeft: <DrawerIcon {...props}/>,
-      headerTitle: <Text style={styles.text}>خطتي الخاصة</Text>
-    })
+    screen: MyPlan
   }
 });
 
 export const ShoppingListStackNav = StackNavigator({
   ShoppingList: {
-    screen: ShoppingList,
-    navigationOptions:(props) => ({
-      headerLeft: <DrawerIcon {...props}/>,
-      headerTitle: <Text style={styles.text}>سلة المشتريات</Text>
-    })
+    screen: ShoppingList
   }
 });
+const ShoppingListState = ShoppingListStackNav.router.getStateForAction;
+ShoppingListStackNav.router.getStateForAction = navigateOnce(ShoppingListState);
 
 export const DrawerRoutes = {
   Main: {
-    screen : TabsStackNavigator
+    screen : TabsStackNavigator,
+    navigationOptions : {
+      drawerLabel: <Text style = {styles.text}>{Strings.MAIN}</Text>,
+      drawerIcon: ({ tintColor }) => (
+     <Icon
+        name='list'
+        type='font-awesome'
+        color='#f50'/> )
+    }
   },
   Plan: {
-    screen: MyPlanStackNav
+    screen: MyPlanStackNav,
+    navigationOptions : {
+      drawerLabel: <Text style = {styles.text}>{Strings.MAIN}</Text>,
+      drawerIcon: () => (
+     <Icon
+        name='list'
+        type='font-awesome'
+        color='#f50'
+
+        /> )
+    }
   },
   Subscribe: {
-    screen: SubscribeStackNav
+    screen: SubscribeStackNav,
+    navigationOptions : {
+      drawerLabel: <Text style = {styles.text}>{Strings.MAIN}</Text>,
+      drawerIcon: () => (
+     <Icon
+        name='list'
+        type='font-awesome'
+        color='#f50'/>)
+    }
   },
   ShoppingList: {
-    screen: ShoppingListStackNav
+    screen: ShoppingListStackNav,
+    navigationOptions : {
+      drawerLabel: <Text style = {styles.text}>{Strings.MAIN}</Text>,
+      drawerIcon: () => (
+     <Icon
+        name='list'
+        type='font-awesome'
+        color='#f50'
+        /> )
+    }
   }
 };
 
@@ -113,11 +141,10 @@ export const AppDrawerNav= DrawerNavigator(DrawerRoutes,{drawerWidth: 200,
         source={{
           uri: 'https://images.pexels.com/photos/110108/pexels-photo-110108.jpeg?h=350&auto=compress&cs=tinysrgb',
         }}
-        style={{width: 200, height: 200}} />
-      <Text>This is A Drawer</Text>
-      </View>
-      <DrawerItems {...props} />
-    </ScrollView>
+        style={{width: 300, height: 300}} />
+    </View>
+    <DrawerItems {...props}/>
+  </ScrollView>
 });
 
 const Routes = {
